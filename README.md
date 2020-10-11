@@ -1,1 +1,5 @@
-# node-boilerplate
+# Node boilerplate
+
+### Stack
+* Node
+* Express
