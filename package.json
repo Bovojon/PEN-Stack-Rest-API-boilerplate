@@ -4,7 +4,7 @@
   "private": true,
   "main": "dist",
   "scripts": {
-    "build": "rimraf dist && babel src --out-dir dist --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "build": "rimraf dist && babel src --out-dir dist",
     "start": "nodemon --exec babel-node ./src/bin/www.js",
     "serve": "node dist/bin/www.js"
   },
