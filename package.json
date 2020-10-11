@@ -4,8 +4,8 @@
   "private": true,
   "main": "dist",
   "scripts": {
-    "build": "rimraf dist && babel src --out-dir dist",
-    "start": "nodemon --exec babel-node ./src/bin/www.js",
+    "build": "rimraf dist && babel src -d dist",
+    "start": "nodemon --exec babel-node src/bin/www.js",
     "serve": "node dist/bin/www.js"
   },
   "babel": {
