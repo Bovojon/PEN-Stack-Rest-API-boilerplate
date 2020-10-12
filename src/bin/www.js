@@ -3,7 +3,7 @@
 import debugLib from 'debug';
 import http from 'http';
 
-import app from '../app';
+import app from '../app.js';
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
