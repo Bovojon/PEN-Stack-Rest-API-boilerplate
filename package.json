@@ -5,11 +5,12 @@
   "main": "dist",
   "scripts": {
     "build": "rimraf dist && babel src -d dist",
-    "start": "nodemon --exec babel-node src/bin/www.js",
-    "serve": "node dist/bin/www.js"
+    "serve": "node dist/bin/www.js",
+    "start": "nodemon --exec babel-node src/bin/www.js"
   },
   "babel": {
-    "presets": ["@babel/preset-env"]
+    "presets": ["@babel/preset-env"],
+    "plugins": ["@babel/transform-runtime"]
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
