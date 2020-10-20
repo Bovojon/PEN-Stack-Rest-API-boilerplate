@@ -1,18 +1,30 @@
-import pkg from 'pg';
-const { Pool } = pkg;
+import { Sequelize } from 'sequelize';
 
-import dbConfig from '../config/database.js'
+import dbConfig from '../config/database.js';
+import UserModel from './user.js';
 
-const pool = new Pool({
-  user: dbConfig.USER,
-  password: dbConfig.PASSWORD,
-  database: dbConfig.DATABASE,
-  host: dbConfig.HOST
-});
-
-pool.on('error', (err) => {
-  console.log('Error on idle client', err)
-  process.exit(-1)
+const sequelize = new Sequelize(dbConfig.DATABASE, dbConfig.USER, dbConfig.PASSWORD, {
+  host: dbConfig.HOST,
+  dialect: 'postgres',
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
 })
 
-export default pool;
+try {
+  await sequelize.authenticate();
+  console.log('Successfully connected to the database.');
+} catch (error) {
+  console.log('Unable to connect to the database: ', error);
+}
+
+const db = {}
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
+db.User = UserModel(sequelize, Sequelize);
+
+export default db;
