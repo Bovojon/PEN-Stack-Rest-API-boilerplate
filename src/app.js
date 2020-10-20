@@ -24,8 +24,6 @@ db.sequelize.sync({ force: true }).then(() => {
   console.log("Dropped and re-synced database.");
 }).catch(err => {
   console.error("Unable to setup Sequelize: ", err);
-}).finally(() => {
-  db.sequelize.close();
 });
 
 routes(app);
