@@ -1,5 +1,6 @@
-# Node boilerplate
+# Node-Express-Postgres Boilerplate
 
-### Stack
-* Node
-* Express
+### PEN Stack
+* **P**ostgres
+* **E**xpress
+* **N**ode
