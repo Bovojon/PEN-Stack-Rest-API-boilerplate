@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_DATABASE: boilerplate
+      DB_HOST: db
+  
+  db:
+    image: postgres:latest
+    container_name: boiler-db
+    ports: 
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: boilerplate
+    # volumes:
+    #   - node-boilerplate-db:/var/lib/postgresql/data
+
+# volumes:
+#   node-boilerplate:
